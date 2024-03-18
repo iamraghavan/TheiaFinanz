@@ -6,14 +6,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- #favicon -->
-    <link rel="shortcut icon" href="{{ asset("/") }}" type="image/x-icon">
-    <!-- #title -->
-    <title>{{$title}}</title>
 
-        <meta name="keywords" content="{{$keywords}}">
-        <meta name="description" content="{{$description}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset("/assets/apple-touch-icon.png") }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset("/assets/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("/assets/favicon-16x16.png") }}">
+    <link rel="manifest" href="{{ asset("/assets/site.webmanifest") }}">
+    <link rel="mask-icon" href="{{ asset("/assets/safari-pinned-tab.svg") }}" color="#35363a">
+    <meta name="msapplication-TileColor" content="#35363a">
+    <meta name="theme-color" content="#35363a">
+
+
+
+    <!-- #title -->
+        <title>{{Seo::get('title')}}</title>
+        <meta name="description"
+            content="{{ Seo::get('description') ? Seo::get('description') : Seo::get('global-description') }}" />
+        <meta name="keyword" content="{{ Seo::get('keyword') }}" />
         <link rel="canonical" href="{{url()->current()}}"/>
+
+
+        @include('laravel-seo::meta-facebook')
+        @include('laravel-seo::meta-twitter')
+
+        @include('laravel-seo::sd-organization')
+        @include('laravel-seo::sd-local-business')
+        @include('laravel-seo::sd-website')
+        @include('laravel-seo::sd-breadcrumblist')
 
     <!--  css dependencies start  -->
     <!-- bootstrap five css -->
